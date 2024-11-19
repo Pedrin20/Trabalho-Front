@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function TaskForm({ addTask, currentTask }) {
+function TaskForm({ addTask, currentTask, handleAdd }) {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
@@ -14,6 +14,7 @@ function TaskForm({ addTask, currentTask }) {
     if (!title.trim()) return;
     addTask({ title, completed: false, id: currentTask?.id || null });
     setTitle("");
+    handleAdd(); // Chame a função handleAdd aqui
   };
 
   return (
@@ -24,7 +25,7 @@ function TaskForm({ addTask, currentTask }) {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Adicione uma tarefa"
       />
-      <button type="submit">{currentTask ? "Atualizar" : "Adicionar"}</button>
+    <button onClick={handleAdd}>Adicionar Tarefa</button>
     </form>
   );
 }
