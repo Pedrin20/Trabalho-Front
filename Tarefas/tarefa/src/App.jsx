@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import TaskManage from './components/Screens/TaskManage';
 import Login from './components/Screens/Login';
 import FormularioTarefa from './components/Screens/FormularioTarefa';
+import GerenciadorTarefa from './components/Screens/GerenciadorTarefas';
 
 function App() {
   const [telaAtual, setTelaAtual] = useState("Login");
@@ -9,6 +9,10 @@ function App() {
   const handleLogin = () => {
     setTelaAtual("TaskManage");
   };
+
+  const handleVoltarLista = ()=> {
+    setTelaAtual("TaskManage");
+  }
 
   const handleAdd = () => {
     setTelaAtual("FormularioTarefa");
@@ -19,9 +23,9 @@ function App() {
       case "Login":
         return <Login onLogin={handleLogin} />;
       case "TaskManage":
-        return <TaskManage handleAdd={handleAdd} />;
+        return <GerenciadorTarefa onAdd={handleAdd} />;
       case "FormularioTarefa":
-        return <FormularioTarefa />;
+        return <FormularioTarefa onVoltarLista={handleVoltarLista}/>;
       default:
         return <Login onLogin={handleLogin} />;
     }
