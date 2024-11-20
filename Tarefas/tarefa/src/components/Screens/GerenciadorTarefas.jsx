@@ -23,7 +23,7 @@ export default function GerenciadorTarefa({ onAdd }) {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="bg-blue-500 text-white p-4 flex justify-between items-center">
+      <header className="bg-sky-400 text-white p-4 flex justify-between items-center">
         <button onClick={toggleMenu} className="text-2xl">
           ☰
         </button>
@@ -80,7 +80,7 @@ export default function GerenciadorTarefa({ onAdd }) {
           />
           <button
             onClick={onAdd}
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-900">
             Criar tarefa
           </button>
         </div>
@@ -104,7 +104,7 @@ export default function GerenciadorTarefa({ onAdd }) {
                   )
                   setTasks(updatedTasks)
                 }}
-                className="h-5 w-5 text-indigo-600"
+                className="h-5 w-5 text-indigo-600 custom-checkbox border-gray-300 rounded focus:ring-emerald-500"
               />
             </li>
           ))}

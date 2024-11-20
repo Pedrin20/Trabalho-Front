@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
+export default function CreateAccount({ onLogin }) {
 
-export default function Login({ onLogin, onCreateAccount }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-
+  const [confirmarSenha, setConfirmarSenha] = useState('');	
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission
     onLogin(); // Call the onLogin function passed as a prop
     console.log(email, senha);
   };
+
+  const validarSenhas = () => {
+    if (senha !== confirmarSenha) {
+      alert('Senhas não conferem');
+      console.log('Senhas não conferem');
+      return false;
+    }
+    console.log('Senhas conferem');
+    return true;
+  }
+
+  const handleCriarConta = () => {
+    if (validarSenhas) {
+      onLogin()
+    }
+
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -17,13 +35,13 @@ export default function Login({ onLogin, onCreateAccount }) {
         <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-md mt-8">
           <div>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Fazer Login
+              Criar Conta
             </h2>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
-              <div>
+              <div> 
                 <label htmlFor="email-address" className="sr-only">
                   Endereço de e-mail
                 </label>
@@ -35,8 +53,24 @@ export default function Login({ onLogin, onCreateAccount }) {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Endereço de e-mail"
-                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                />
+              </div>
+              <div> 
+                <label htmlFor="email-address" className="sr-only">
+                  Senha
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="email"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Senha"
+                  onChange={(e) => setSenha(e.target.value)}
+                  value={senha}
                 />
               </div>
               <div>
@@ -50,12 +84,11 @@ export default function Login({ onLogin, onCreateAccount }) {
                   autoComplete="current-password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Senha"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
+                  placeholder="Repita sua senha"
+                  onChange={(e) => setConfirmarSenha(e.target.value)}
+                  value={confirmarSenha}
                 />
               </div>
-              
             </div>
 
             <div className="flex items-center justify-between">
@@ -89,16 +122,9 @@ export default function Login({ onLogin, onCreateAccount }) {
           </form>
           <div className="text-center">
             <p className="mt-2 text-sm text-gray-600">
-              Não tem uma conta?{' '}
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault(); // Prevent the default anchor behavior
-                  onCreateAccount(); // Call the onCreateAccount function passed as a prop
-                }}
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Criar conta
+              Já tem uma conta?{' '}
+              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                Entrar
               </a>
             </p>
           </div>
