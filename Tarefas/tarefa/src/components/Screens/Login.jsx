@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-
+import Header from '../Header';
 export default function Login({ onLogin, onCreateAccount }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission
@@ -11,6 +12,7 @@ export default function Login({ onLogin, onCreateAccount }) {
   };
 
   return (
+    <>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center">
         <h1 className="flex items-center justify-center text-5xl font-extrabold dark:text-black">TaskManager</h1>
@@ -105,5 +107,6 @@ export default function Login({ onLogin, onCreateAccount }) {
         </div>
       </div>
     </div>
+    </>
   );
 }

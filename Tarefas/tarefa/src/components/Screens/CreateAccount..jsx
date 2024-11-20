@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Header from '../Header';
 export default function CreateAccount({ onLogin }) {
 
   const [email, setEmail] = useState('');
@@ -29,6 +30,7 @@ export default function CreateAccount({ onLogin }) {
   }
 
   return (
+    <>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center">
         <h1 className="flex items-center justify-center text-5xl font-extrabold dark:text-black">TaskManager</h1>
@@ -131,5 +133,6 @@ export default function CreateAccount({ onLogin }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
