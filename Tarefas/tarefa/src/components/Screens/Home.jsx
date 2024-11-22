@@ -1,29 +1,28 @@
 import React from "react";
 import Header from "../Header";
-export default function Home ({ onGoToLogin, onCreateAccount }) {
+export default function Home ({ onGoToLogin, onGoToCreateAccount, onGoSobre, onGoHome }) {
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", backgroundColor: "#f7f9fc", minHeight: "100vh", color: "#1a1a1a" }}>
-
+    <>
+      <Header onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
+    <div style={{ fontFamily: "'Verdana', sans-serif", backgroundColor: "#f7f9fc", minHeight: "100vh", color: "#1a1a1a" }}>
       {/* Home Section */}
       <main style={mainStyle}>
         {/* Hero Section */}
         <section style={heroSectionStyle}>
           <div style={heroContentStyle}>
-            <h2 style={{ fontSize: "2rem", margin: "0 0 1rem", color: "#003c8f" }}>Gerencie suas tarefas com facilidade</h2>
+            <h2 style={{ fontSize: "2rem", margin: "0 0 1rem", color: "#003c8f", fontWeight:"bold" }}>Gerencie suas tarefas com facilidade!</h2>
             <p style={{ marginBottom: "1.5rem", color: "#4a4a4a", fontSize: "1.2rem" }}>
               O <strong>TaskManager</strong> é a ferramenta ideal para organizar sua vida. Com um design intuitivo e funcionalidades poderosas, 
               você nunca mais perderá uma tarefa importante!
             </p>
-            <button onClick={onCreateAccount} style={buttonStyle}>Começe agora!</button>
+            <button onClick={onGoToCreateAccount} style={buttonStyle}>Começe agora!</button>
             <p>Já tem uma conta?
             <a href="#" style={{ color: "#0056b3", textDecoration: "none", marginLeft: "0.2rem" }} onClick={onGoToLogin}>Entrar</a>
             </p>
-
-
           </div>
           <div style={heroImageStyle}>
             <img
-              src="https://via.placeholder.com/400x300"
+              src="https://setting.com.br/wp-content/uploads/2019/06/como-organizar-tarefas-diarias.jpg"
               alt="Gestão de tarefas"
               style={{ maxWidth: "100%", borderRadius: "10px" }}
             />
@@ -41,20 +40,18 @@ export default function Home ({ onGoToLogin, onCreateAccount }) {
           </ul>
         </section>
       </main>
-
+    </div>
       {/* Footer Section */}
-      <footer style={footerStyle}>
+    <footer style={footerStyle}>
         <div style={footerContent}>
-          <h3 style={{ margin: "0 0 1rem", color: "#003c8f" }}>TaskManager</h3>
-          <p>© 2024 TaskManager. Todos os direitos reservados.</p>
+          <h3 style={{ margin: "0 0 1rem", color: "#ffff" }}>TaskManager</h3>
+          <p style={{color:"white"}}>© 2024 TaskManager. Todos os direitos reservados.</p>
           <nav style={footerNavStyle}>
-            <a href="#about" style={footerLinkStyle}>Sobre</a>
-            <a href="#features" style={footerLinkStyle}>Funcionalidades</a>
-            <a href="#contact" style={footerLinkStyle}>Contato</a>
+            
           </nav>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 
@@ -134,7 +131,7 @@ const featuresListStyle = {
 };
 
 const footerStyle = {
-  backgroundColor: "#e3f2fd",
+  backgroundColor: "#1f2937",
   padding: "2rem",
   textAlign: "center",
   marginTop: "2rem",
@@ -154,6 +151,6 @@ const footerNavStyle = {
 
 const footerLinkStyle = {
   textDecoration: "none",
-  color: "#0056b3",
+  color: "#ffffff",
   fontWeight: "500",
 };

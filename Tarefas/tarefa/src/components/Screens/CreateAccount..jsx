@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Header from '../Header';
-export default function CreateAccount({ onLogin }) {
+import Footer from '../Footer';
+export default function CreateAccount({ onGoToLogin, onGoToCreateAccount, onGoSobre, onGoHome }) {
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -31,6 +32,7 @@ export default function CreateAccount({ onLogin }) {
 
   return (
     <>
+    <Header onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center">
         <h1 className="flex items-center justify-center text-5xl font-extrabold dark:text-black">TaskManager</h1>
@@ -118,14 +120,14 @@ export default function CreateAccount({ onLogin }) {
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Entrar
+                Criar Conta
               </button>
             </div>
           </form>
           <div className="text-center">
             <p className="mt-2 text-sm text-gray-600">
               Já tem uma conta?{' '}
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <a href="#" onClick={onGoToLogin} className="font-medium text-indigo-600 hover:text-indigo-500">
                 Entrar
               </a>
             </p>
@@ -133,6 +135,7 @@ export default function CreateAccount({ onLogin }) {
         </div>
       </div>
     </div>
+    <Footer/>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Header( onLogin, onCreateAccount, onGoHome) {
+export default function Header({onGoToLogin, onGoToCreateAccount, onGoSobre, onGoHome}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -11,10 +11,9 @@ export default function Header( onLogin, onCreateAccount, onGoHome) {
     <header className="bg-gray-800 text-white p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold"><a href="#">TaskManager</a></h1>
+          <h1 className="text-2xl font-bold"><a href="" onClick={onGoHome} >TaskManager</a></h1>
           <button
             className="md:hidden"
-            onClick={toggleMenu}
             aria-label="Toggle menu"
           >
             <svg
@@ -32,22 +31,17 @@ export default function Header( onLogin, onCreateAccount, onGoHome) {
           <nav className="hidden md:block">
             <ul className="flex space-x-4">
               <li>
-                <a href="#funcionalidades" className="hover:text-gray-300 transition-colors">
-                  Funcionalidades
-                </a>
-              </li>
-              <li>
-                <a href="#sobre" className="hover:text-gray-300 transition-colors">
+                <a href="#" onClick={onGoSobre} cla ssName="hover:text-gray-300 transition-colors">
                   Sobre
                 </a>
               </li>
               <li>
-                <a href="#entrar" className="hover:text-gray-300 transition-colors">
+                <a href="#" onClick={onGoToLogin} className="hover:text-gray-300 transition-colors">
                   Entrar
                 </a>
               </li>
               <li>
-                <a href="#criar-conta" className="bg-sky-400 hover:bg-blue-600 px-3 py-1 rounded transition-colors">
+                <a href="#" onClick={onGoToCreateAccount} className="bg-sky-400 hover:bg-blue-600 px-3 py-1 rounded transition-colors">
                   Criar Conta
                 </a>
               </li>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../Header';
-export default function Login({ onLogin, onCreateAccount }) {
+import Footer from '../Footer';
+export default function Login({ onLogin, onGoToCreateAccount, onGoToLogin, onGoSobre, onGoHome }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   
@@ -13,6 +14,7 @@ export default function Login({ onLogin, onCreateAccount }) {
 
   return (
     <>
+    <Header onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center">
         <h1 className="flex items-center justify-center text-5xl font-extrabold dark:text-black">TaskManager</h1>
@@ -96,7 +98,7 @@ export default function Login({ onLogin, onCreateAccount }) {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault(); // Prevent the default anchor behavior
-                  onCreateAccount(); // Call the onCreateAccount function passed as a prop
+                  onGoToCreateAccount(); // Call the onCreateAccount function passed as a prop
                 }}
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
@@ -107,6 +109,7 @@ export default function Login({ onLogin, onCreateAccount }) {
         </div>
       </div>
     </div>
+    <Footer />
     </>
   );
 }
