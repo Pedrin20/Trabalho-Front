@@ -15,7 +15,7 @@ export default function Home ({ onGoToLogin, onGoToCreateAccount, onGoSobre, onG
               O <strong>TaskManager</strong> é a ferramenta ideal para organizar sua vida. Com um design intuitivo e funcionalidades poderosas, 
               você nunca mais perderá uma tarefa importante!
             </p>
-            <button onClick={onGoToCreateAccount} style={buttonStyle}>Começe agora!</button>
+            <button onClick={onGoToCreateAccount} className="block bg-blue-500 hover:bg-blue-600 px-11 py-4 text-white rounded transition-colors ">Comece agora!</button>
             <p>Já tem uma conta?
             <a href="#" style={{ color: "#0056b3", textDecoration: "none", marginLeft: "0.2rem" }} onClick={onGoToLogin}>Entrar</a>
             </p>
@@ -102,17 +102,6 @@ const heroContentStyle = {
 
 const heroImageStyle = {
   flex: 1,
-};
-
-const buttonStyle = {
-  backgroundColor: "#0056b3",
-  color: "#ffffff",
-  padding: "0.75rem 1.5rem",
-  border: "none",
-  borderRadius: "5px",
-  fontSize: "1rem",
-  cursor: "pointer",
-  transition: "background-color 0.3s ease",
 };
 
 const sectionStyle = {

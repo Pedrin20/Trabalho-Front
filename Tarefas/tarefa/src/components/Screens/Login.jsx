@@ -7,14 +7,13 @@ export default function Login({ onLogin, onGoToCreateAccount, onGoToLogin, onGoS
   
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission
     onLogin(); // Call the onLogin function passed as a prop
     console.log(email, senha);
   };
 
   return (
     <>
-    <Header onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
+    <Header onLogin={onLogin} onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center">
         <h1 className="flex items-center justify-center text-5xl font-extrabold dark:text-black">TaskManager</h1>
@@ -85,7 +84,7 @@ export default function Login({ onLogin, onGoToCreateAccount, onGoToLogin, onGoS
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Entrar
               </button>

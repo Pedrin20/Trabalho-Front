@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
-export default function CreateAccount({ onGoToLogin, onGoToCreateAccount, onGoSobre, onGoHome }) {
+export default function CreateAccount({ onLogin, onGoToLogin, onGoToCreateAccount, onGoSobre, onGoHome }) {
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -32,7 +32,7 @@ export default function CreateAccount({ onGoToLogin, onGoToCreateAccount, onGoSo
 
   return (
     <>
-    <Header onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
+    <Header onLogin={onLogin} onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center">
         <h1 className="flex items-center justify-center text-5xl font-extrabold dark:text-black">TaskManager</h1>
@@ -118,7 +118,7 @@ export default function CreateAccount({ onGoToLogin, onGoToCreateAccount, onGoSo
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Criar Conta
               </button>

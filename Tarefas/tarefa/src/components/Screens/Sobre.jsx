@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
-function Sobre({onGoToLogin, onGoToCreateAccount, onGoSobre, onGoHome}) {
+function Sobre({ onLogin, onGoToLogin, onGoToCreateAccount, onGoSobre, onGoHome}) {
   return (
     <>
-    <Header onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
+    <Header onLogin={onLogin} onGoToLogin={onGoToLogin} onGoToCreateAccount={onGoToCreateAccount} onGoSobre={onGoSobre} onGoHome={onGoHome}/>
     <div className="bg-gray-100 min-h-screen">
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center mb-12 text-blue-600">Sobre o TaskManager</h1>

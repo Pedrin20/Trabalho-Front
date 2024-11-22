@@ -31,7 +31,7 @@ export default function Header({onGoToLogin, onGoToCreateAccount, onGoSobre, onG
           <nav className="hidden md:block">
             <ul className="flex space-x-4">
               <li>
-                <a href="#" onClick={onGoSobre} cla ssName="hover:text-gray-300 transition-colors">
+                <a href="#" onClick={onGoSobre} className="hover:text-gray-300 transition-colors">
                   Sobre
                 </a>
               </li>
@@ -41,7 +41,7 @@ export default function Header({onGoToLogin, onGoToCreateAccount, onGoSobre, onG
                 </a>
               </li>
               <li>
-                <a href="#" onClick={onGoToCreateAccount} className="bg-sky-400 hover:bg-blue-600 px-3 py-1 rounded transition-colors">
+                <a href="#" onClick={onGoToCreateAccount} className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded transition-colors">
                   Criar Conta
                 </a>
               </li>

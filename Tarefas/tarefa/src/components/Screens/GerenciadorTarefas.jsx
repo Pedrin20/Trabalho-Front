@@ -4,15 +4,16 @@ export default function GerenciadorTarefa({ onAdd }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [tasks, setTasks] = useState([
-    { id: 1, title: 'Completar relatório', completed: false },
-    { id: 2, title: 'Reunião com equipe', completed: true },
-    { id: 3, title: 'Preparar apresentação', completed: false },
+    { id: 1, prioridade: "Fácil" , title: 'Completar relatório', completed: false },
+    { id: 2, prioridade: "Médio" , title: 'Reunião com equipe', completed: true },
+    { id: 3, prioridade: "Difícil" , title: 'Preparar apresentação', completed: false },
+    { id: 4, prioridade: "Difícil" , title: 'Preparar apresentação para o dia tal do dia tal', completed: false },
   ])
 
   const filteredTasks = tasks.filter(task =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   )
-  //from-cyan-400 to-light-blue-500
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   const addTask = () => {
@@ -85,6 +86,28 @@ export default function GerenciadorTarefa({ onAdd }) {
           </button>
         </div>
 
+        {/* Descritivo */}
+<div className="relative">
+  <ul className="space-y-2 font-bold">
+    <li className='bg-white p-4 rounded shadow flex items-center justify-between'>
+      <div className="flex items-center space-x-4 w-full">
+        <span className='' style={{ flex: '1 1 0', maxWidth: '200px', textAlign: "center" }}>
+          Tarefas
+        </span>
+        <span className='' style={{ flex: '1 1 0', maxWidth: '200px' }}>
+          Prioridade
+        </span>
+      </div>
+      <div className='flex items-center space-x-4'>
+        <span className='' style={{ flex: '1 1 0', maxWidth: '200px', textAlign: "center" }}>
+          Ações
+        </span>
+      </div>
+    </li>
+  </ul>
+  <div style={{ width: '0%', borderBottom: '1px solid gray', margin: '0 auto', position: 'absolute', bottom: 0, left: '7.5%' }}></div>
+</div>
+
         {/* Lista de tarefas */}
         <ul className="space-y-2">
           {filteredTasks.map((task) => (
@@ -92,20 +115,36 @@ export default function GerenciadorTarefa({ onAdd }) {
               key={task.id}
               className="bg-white p-4 rounded shadow flex items-center justify-between"
             >
-              <span className={task.completed ? 'line-through text-gray-500' : ''}>
-                {task.title}
-              </span>
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={() => {
-                  const updatedTasks = tasks.map((t) =>
-                    t.id === task.id ? { ...t, completed: !t.completed } : t
-                  )
-                  setTasks(updatedTasks)
-                }}
-                className="h-5 w-5 text-indigo-600 custom-checkbox border-gray-300 rounded focus:ring-emerald-500"
-              />
+              <div className="flex items-center space-x-4 w-full">
+                <span className={`truncate ${task.completed ? 'line-through text-gray-500' : ''}`} style={{ flex: '1 1 0', maxWidth: '200px' }}>
+                  {task.title}
+                </span>
+                <span className={`flex-none ${task.completed ? 'line-through text-gray-500' : ''}`} style={{ width: '100px', textAlign: 'center' }}>
+                  {task.prioridade}
+                </span>
+              </div>
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={() => {
+                    const updatedTasks = tasks.filter((t) => t.id !== task.id)
+                    setTasks(updatedTasks)
+                  }}
+                  className="text-red-600 hover:text-red-800 bg-red-100 px-2 py-0.9 rounded"
+                >
+                  Excluir
+                </button>
+                <input
+                  type="checkbox"
+                  checked={task.completed}
+                  onChange={() => {
+                    const updatedTasks = tasks.map((t) =>
+                      t.id === task.id ? { ...t, completed: !t.completed } : t
+                    )
+                    setTasks(updatedTasks)
+                  }}
+                  className="h-5 w-5 text-indigo-600 custom-checkbox border-gray-300 rounded focus:ring-emerald-500"
+                />
+              </div>
             </li>
           ))}
         </ul>
