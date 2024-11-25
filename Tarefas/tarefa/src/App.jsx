@@ -34,6 +34,11 @@ function App() {
     setIsLogged(true);
   };
 
+  const handleLogout = () => {
+    setTelaAtual("Login");
+    setIsLogged(false);
+  };
+
   const handleVoltarLista = ()=> {
     setTelaAtual("TaskManage");
   }
@@ -52,10 +57,10 @@ function App() {
         return <Login OnGoToLogin={handleGoToLogin} onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome} />;
 
       case "TaskManage":
-        return <GerenciadorTarefa onAdd={handleAdd} OnGoToLogin={handleGoToLogin}/>;
+        return <GerenciadorTarefa onAdd={handleAdd} OnGoToLogin={handleGoToLogin}  onLogout={handleLogout}/>;
 
       case "FormularioTarefa":
-        return <FormularioTarefa OnGoToLogin={handleGoToLogin} onVoltarLista={handleVoltarLista}/>;
+        return <FormularioTarefa OnGoToLogin={handleGoToLogin} onLogout={handleLogout} onVoltarLista={handleVoltarLista}/>;
 
       case "CriarConta":
         return <CreateAccount OnGoToLogin={handleGoToLogin} onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
