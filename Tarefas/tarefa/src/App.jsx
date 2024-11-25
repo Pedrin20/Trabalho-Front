@@ -46,25 +46,25 @@ function App() {
   const renderScreen = () => {
     switch (telaAtual) {
       case "Home":
-            return <Home onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
+            return <Home OnGoToLogin={handleGoToLogin} onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
 
       case "Login":
-        return <Login onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome} />;
+        return <Login OnGoToLogin={handleGoToLogin} onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome} />;
 
       case "TaskManage":
-        return <GerenciadorTarefa onAdd={handleAdd} />;
+        return <GerenciadorTarefa onAdd={handleAdd} OnGoToLogin={handleGoToLogin}/>;
 
       case "FormularioTarefa":
-        return <FormularioTarefa onVoltarLista={handleVoltarLista}/>;
+        return <FormularioTarefa OnGoToLogin={handleGoToLogin} onVoltarLista={handleVoltarLista}/>;
 
       case "CriarConta":
-        return <CreateAccount onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
+        return <CreateAccount OnGoToLogin={handleGoToLogin} onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
 
         case "Sobre":
-        return <Sobre onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
+        return <Sobre OnGoToLogin={handleGoToLogin} onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
 
       default:
-        return <Home onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
+        return <Home OnGoToLogin={handleGoToLogin} onLogin={handleLogin} onGoToCreateAccount={handleGoToCreateAccount} onGoToLogin={handleGoToLogin} onGoSobre={handleGoToSobre} onGoToHome={handleGoToHome}/>;
     } 
   };
 

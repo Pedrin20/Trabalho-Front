@@ -1,42 +1,80 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-export default function GerenciadorTarefa({ onAdd }) {
+
+export default function GerenciadorTarefa({ onAdd, onGoToLogin }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [tasks, setTasks] = useState([
-    { id: 1, prioridade: "Fácil" , title: 'Completar relatório', completed: false },
-    { id: 2, prioridade: "Médio" , title: 'Reunião com equipe', completed: true },
-    { id: 3, prioridade: "Difícil" , title: 'Preparar apresentação', completed: false },
-    { id: 4, prioridade: "Difícil" , title: 'Preparar apresentação para o dia tal do dia tal', completed: false },
+    { id: 1, prioridade: "Fácil" , title: 'Completar relatório', completed: false, dataConclusao: '11/02/2025' },
+    { id: 2, prioridade: "Médio" , title: 'Reunião com equipe', completed: true, dataConclusao: '01/01/2022' },
+    { id: 3, prioridade: "Difícil" , title: 'Preparar apresentação', completed: false, dataConclusao: '09/11/2024' },
+    { id: 4, prioridade: "Difícil" , title: 'Preparar apresentação para o dia tal do dia tal', completed: false, dataConclusao: '05/01/2024' },
   ])
+ {/* Necessario para a header */}
+ const menuRef = useRef(null)
+ const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+ const handleClickOutside = (event) => {
+  if (menuRef.current && !menuRef.current.contains(event.target)) {
+    setIsMenuOpen(false)
+  }
+}
+useEffect(() => {
+  if (isMenuOpen) {
+    document.addEventListener('mousedown', handleClickOutside)
+  } else {
+    document.removeEventListener('mousedown', handleClickOutside)
+  }
+
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside)
+  }
+}, [isMenuOpen])
+
+
+ {/* x */}
+
+  const onLogout = () => {
+    // Implementação futura: redirecionar para a tela de login
+    console.log('Redirecionar para a tela de login')
+    onGoToLogin()
+  }
+  
 
   const filteredTasks = tasks.filter(task =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+
+
+
+  
 
   const addTask = () => {
     // Implementação futura: redirecionar para a tela de adicionar tarefa
     console.log('Redirecionar para adicionar tarefa')
   }
+const titleTarefa = 'Gerenciador de tarefas'
+  
 
   return (
+    
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <header className="bg-sky-400 text-white p-4 flex justify-between items-center">
         <button onClick={toggleMenu} className="text-2xl">
           ☰
         </button>
-        <h1 className="text-xl text-white font-bold">Gerenciador de Tarefas</h1>
+        <h1 className="text-xl text-white font-bold">Tarefas</h1>
         <div className="w-8"></div> {/* Espaço para balancear o layout */}
       </header>
 
       {/* Menu lateral */}
       <div
+      ref={menuRef}
         className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
+        style={{ zIndex: 1000 }}
       >
         <div className="p-4">
           <button onClick={toggleMenu} className="text-2xl mb-4">
@@ -46,7 +84,7 @@ export default function GerenciadorTarefa({ onAdd }) {
             <ul className="space-y-2">
               <li>
                 <a href="#" className="block py-2 px-4 text-gray-800 hover:bg-gray-200 rounded">
-                  Início
+                  Tarefas
                 </a>
               </li>
               <li>
@@ -60,7 +98,7 @@ export default function GerenciadorTarefa({ onAdd }) {
                 </a>
               </li>
               <li>
-                <a href="#" className="block py-2 px-4 text-gray-800 hover:bg-gray-200 rounded">
+                <a href="#" onClick={onLogout} className="block py-2 px-4 text-gray-800 hover:bg-gray-200 rounded">
                   Sair
                 </a>
               </li>
@@ -94,8 +132,11 @@ export default function GerenciadorTarefa({ onAdd }) {
         <span className='' style={{ flex: '1 1 0', maxWidth: '200px', textAlign: "center" }}>
           Tarefas
         </span>
-        <span className='' style={{ flex: '1 1 0', maxWidth: '200px' }}>
+        <span className='' style={{ textAlign: "center", flex: '1 1 0', maxWidth: '200px' }}>
           Prioridade
+        </span>
+        <span className='' style={{ textAlign: "center", flex: '1 1 0', maxWidth: '200px' }}>
+          Data de conclusão
         </span>
       </div>
       <div className='flex items-center space-x-4'>
@@ -119,8 +160,11 @@ export default function GerenciadorTarefa({ onAdd }) {
                 <span className={`truncate ${task.completed ? 'line-through text-gray-500' : ''}`} style={{ flex: '1 1 0', maxWidth: '200px' }}>
                   {task.title}
                 </span>
-                <span className={`flex-none ${task.completed ? 'line-through text-gray-500' : ''}`} style={{ width: '100px', textAlign: 'center' }}>
+                <span className={`flex-none ${task.completed ? 'line-through text-gray-500' : ''}`} style={{ width: '200px', textAlign: 'center' }}>
                   {task.prioridade}
+                </span>
+                <span className={`flex-none ${task.completed ? 'line-through text-gray-500' : ''}`} style={{ width: '200px', textAlign: 'center' }}>
+                  {task.dataConclusao}
                 </span>
               </div>
               <div className="flex items-center space-x-4">
