@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Menu, X, User, LogOut, Settings, Home, ArrowLeft, Save } from 'lucide-react'
+import { Menu, X, User, LogOut, Settings, Home, ArrowLeft, Save, CheckSquare } from 'lucide-react'
 
-export default function FormularioTarefa({ onVoltarLista, onLogout }) {
+export default function FormularioTarefa({ onVoltarLista, onLogout, onGoToConfiguracoes }) {
   const [task, setTask] = useState({
     title: '',
     description: '',
@@ -80,8 +80,8 @@ export default function FormularioTarefa({ onVoltarLista, onLogout }) {
               <User size={24} className="text-sky-600" />
             </div>
             <div>
-              <p className="font-semibold">John Doe</p>
-              <p className="text-sm opacity-75">john@example.com</p>
+            <p className="font-semibold">Pedro</p>
+            <p className="text-sm opacity-75">pedroxd@gmail.com</p>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function FormularioTarefa({ onVoltarLista, onLogout }) {
           <ul className="space-y-2">
             <li>
               <a href="#" className="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:bg-sky-100 rounded transition-colors duration-200">
-                <Home size={20} />
+              <CheckSquare size={20} />
                 <span>Início</span>
               </a>
             </li>

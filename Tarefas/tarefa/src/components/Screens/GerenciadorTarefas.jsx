@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Plus, Search, User, LogOut, Settings, CheckSquare } from 'lucide-react'
 
-export default function GerenciadorTarefa({ onAdd, onGoToLogin, onLogout }) {
+export default function GerenciadorTarefa({ onAdd, onGoToLogin, onLogout, onGoToConfiguracoes, onGoToPerfil }) {  
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [tasks, setTasks] = useState([
@@ -69,8 +69,8 @@ export default function GerenciadorTarefa({ onAdd, onGoToLogin, onLogout }) {
               <User size={24} className="text-sky-600" />
             </div>
             <div>
-              <p className="font-semibold">John Doe</p>
-              <p className="text-sm opacity-75">john@example.com</p>
+              <p className="font-semibold">Pedro</p>
+              <p className="text-sm opacity-75">pedroxd@gmail.com</p>
             </div>
           </div>
         </div>
@@ -83,13 +83,13 @@ export default function GerenciadorTarefa({ onAdd, onGoToLogin, onLogout }) {
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:bg-sky-100 rounded transition-colors duration-200">
+              <a href="#" onClick={onGoToPerfil} className="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:bg-sky-100 rounded transition-colors duration-200">
                 <User size={20} />
                 <span>Perfil</span>
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:bg-sky-100 rounded transition-colors duration-200">
+              <a href="#" onClick={onGoToConfiguracoes} className="flex items-center space-x-3 py-2 px-4 text-gray-700 hover:bg-sky-100 rounded transition-colors duration-200">
                 <Settings size={20} />
                 <span>Configurações</span>
               </a>
